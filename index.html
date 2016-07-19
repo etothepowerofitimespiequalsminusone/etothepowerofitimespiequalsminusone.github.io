@@ -1,5 +1,341 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
-<head><title>This is the title</title></head>
-<body><p>this is some text</p></body>
+
+<head>
+  <title>Data structures</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="website description" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="stili.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script type="text/javascript" src="skripti.js"></script>
+</head>
+
+<body>
+        
+            <header>
+                    <div id="Title">
+                      <h1>Data Structures</h1>
+                    </div>
+            </header>
+
+          <div id="main">
+                <div id="sidenav" class="sidenav">     
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                    <a href="#Linked-list">Linked list</a>
+                    <a href="#Stack">Stack</a>
+                    <a href="#Queue">Queue</a>
+                    <a href="#Tree">Tree</a>
+                    <a href="#Signup">Sign up</a>
+                    <a href="#Title">Home</a>
+                </div>
+              
+	<nav>
+	  <div id="menubar">
+            <ul id="nav">
+                <li><a class="topmenu"><span onclick="openNav()">☰</span></a></li>
+                <li class="current"><a href="#Title">Home</a></li>
+                <li><a href="#Stack">Tutorials</a></li>
+                <li><a href="#Queue">Code Examples</a></li>
+                <li><a href="#Tree">Projects</a></li>
+                <li><a href="#Footer">Contact Us</a></li>
+            </ul>
+         </div>	
+        </nav>	
+        <div id="maincontent">
+            <div id="site_content">	
+                <div id="content">
+                    <div id="intro">
+                        <h1>Introduction</h1> 
+                        <img src="http://4.bp.blogspot.com/-TPH8lzMOP_s/VpASXNKdeNI/AAAAAAAAIAA/zsH9Ixjx0G0/s1600/data%2Bstructure.jpg" alt="data" id="introImg">		
+                    </div>
+                <script>
+                var p = document.createElement("p");
+                var text = document.createTextNode("Data Structures are the programmatic way of storing data so that data can be used efficiently. Almost every enterprise application uses various types of data structures in one or other way. This tutorial will give you great understanding on Data Structures concepts needed to understand the complexity of enterprise level applications and need of algorithms, data structures.");
+                p.appendChild(text);
+
+                var element = document.getElementById("intro");
+                element.appendChild(p);
+                </script>
+        <div id="linked-list">
+            <div class="content_imagetext">
+          
+           <div class="sectionintro">
+            <h3 id="Linked-list">Linked List</h3>
+            </div>
+		    <div class="content_image">
+		      <img src="http://image.slidesharecdn.com/part7linkedlists-140828232229-phpapp01/95/data-structures-part7-linked-lists-7-638.jpg?cb=1409268219" alt="picture of linkedlist" style="cursor:pointer" onclick="showImage('http://image.slidesharecdn.com/part7linkedlists-140828232229-phpapp01/95/data-structures-part7-linked-lists-7-638.jpg?cb=1409268219')">     
+                    </div>
+                    <div id="largeImgPanel" onclick="hideMe(this);">
+                    <img id="largeImg" src="http://image.slidesharecdn.com/part7linkedlists-140828232229-phpapp01/95/data-structures-part7-linked-lists-7-638.jpg?cb=1409268219" alt="image">
+                    </div> 
+                <div id="linkedText">
+		    <p> 
+                        Linked lists are a way to store data with structures so that the programmer can automatically create 
+                        a new place to store data whenever necessary. Specifically, the programmer writes a struct or class 
+                        definition that contains variables holding information about something, and then has a pointer to a 
+                        struct of its type. Each of these individual struct or classes in the list is commonly known as a node.
+                        Each element (we will call it a node) of a list is comprising of two items - the data and a reference to the next node. The last node has a reference to null. The entry point into a linked list is called the head of the list. It should be noted that head is not a separate node, but the reference to the first node. If the list is empty then the head is a null reference.
+                        A linked list is a dynamic data structure. The number of nodes in a list is not fixed and can grow and shrink on demand. Any application which has to deal with an unknown number of objects will need to use a linked list.
+                        <a class="linked-read-more"><b>Read more</b></a>
+                    </p>
+                    <p><a href="http://www.tutorialspoint.com/data_structures_algorithms/linked_lists_algorithm.htm"><b>Read more about linked lists</b></a></p>
+                    <p>
+One disadvantage of a linked list against an array is that it does not allow direct access to the individual elements. If you want to access a particular item then you have to start at the head and follow the references until you get to that item.
+Another disadvantage is that a linked list uses more memory compare with an array - we extra 4 bytes (on 32-bit CPU) to store a reference to the next node. </p>
+                    <pre><code>
+                    #ifndef NODE_H
+                    #define NODE_H
+                    #include &lt;iostream&gt;
+
+                    using namespace std;
+
+                    template &lt;class T&gt;
+                    class Node
+                    {
+                        public:
+                            Node();
+                            Node(const T& item, Node&lt;T&gt;* ptrnext = NULL);
+                            T data;
+                            // access to the next node
+                            Node&lt;T&gt;* NextNode();
+                            // list modification methods
+                            void InsertAfter(Node&lt;T&gt;* p);
+                            Node&lt;T&gt;* DeleteAfter();
+                            Node&lt;T&gt; * GetNode(const T& item, Node&lt;T&gt;* nextptr = NULL);
+                        private:
+
+                            Node&lt;T&gt; * next;
+                    };
+
+                    #endif // NODE_H            
+                    </code></pre>
+                     <p>Examples Let us assume the singly linked list above and trace down the effect of each fragment below. The list is restored to its initial state before each line executes </p>
+                    <ul>
+                        <li><code><b>1.head = head.next;</b></code></li>
+                        <li><img src='https://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/pix/linkedlist2.bmp' alt='list image'></li>
+                        <li><code><b>2.head.next = head.next.next;</b></code></li>
+                        <li><img src='https://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/pix/linkedlist3.bmp' alt='list image'></li>
+                        <li><code><b>3.head.next.next.next.next = head;</b></code></li>
+                        <li><img src='https://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/pix/linkedlist4.bmp' alt='list image'></li>  
+                    </ul>
+                       <p> <a class="linked-read-more" href="#Linked-list"><b>Read more</b></a></p>
+                    
+                </div>
+          </div>
+    </div>
+  
+            <div class="content_imagetext">   
+                <div class="sectionintro">
+                 <h3 id="Stack">Stack</h3>
+                </div>
+                   <div class="content_image">
+                          <img src="http://www.tutorialspoint.com/data_structures_algorithms/images/stack_representation.jpg" alt="picture of linkedlist" style="cursor:pointer" onclick="showImage('http://www.tutorialspoint.com/data_structures_algorithms/images/stack_representation.jpg')">      
+                  </div>
+                        <div id="stackText">
+                             <p> Stacks are a type of container adaptor, specifically designed to operate in a LIFO context (last-in first-out), where elements are inserted and extracted only from one end of the container.stacks are implemented as containers adaptors, which are classes that use an encapsulated object of a specific container class as its underlying container, providing a specific set of member functions to access its elements. Elements are pushed/popped from the "back" of the specific container, which is known as the top of the stack.
+                                 Conceptually, a stack is simple: a data structure that allows adding and removing elements in a particular order. Every time an element is added, it goes on the top of the stack; the only element that can be removed is the element that was at the top of the stack. Consequently, a stack is said to have "first in last out" behavior (or "last in, first out"). The first item added to a stack will be the last item removed from a stack.                                   
+                                 In a sense, stacks are part of the fundamental language of computer science. When you want to express an idea of the "first in last out" variety, it just makes sense to talk about it using the common terminology. Moreover, such operations show up an awful lot, from theoretical computer science tools such as a push-down automaton to AI, including implementations of depth-first search. 
+                                 <a class="stack-read-more"><b>Read more</b></a>
+                             </p>
+                             <p>The underlying container may be any of the standard container class templates or some other specifically designed container class. The container shall support the following operations:</p>
+                             <ul>
+                                 <li>empty</li>
+                                 <li>size</li>
+                                 <li>back</li>
+                                 <li>push_back</li>
+                                 <li>pop_back</li>
+                             </ul>
+                              
+                                <p> 
+                                <iframe width="420" height="315" src="https://www.youtube.com/embed/sFVxsglODoo" allowfullscreen> </iframe> 
+                                <iframe width="420" height="315" src="https://www.youtube.com/embed/FNZ5o9S9prU" allowfullscreen> </iframe> 
+                                </p>
+                              <p><a href="http://www.tutorialspoint.com/data_structures_algorithms/linked_lists_algorithm.htm"><b>More info</b></a></p>
+                              <p><a class="stack-read-more" href="#Stack"><b>Read more</b></a></p>
+                       </div>
+            </div>
+            
+ 
+            <div class="content_imagetext">
+          
+           <div class="sectionintro">
+            <h3 id="Queue">Queue</h3>
+            </div>
+		    <div class="content_image">
+                        <img src="http://www.studytonight.com/data-structures/images/introduction-to-queue.png" alt="picture of queue" style="cursor:pointer" onclick="showImage('http://www.studytonight.com/data-structures/images/introduction-to-queue.png')">                    
+                    </div>
+                <div id="queueText">
+                        <p> 
+                        Queues are a type of container adaptor, specifically designed to operate in a FIFO context (first-in first-out), where elements are inserted into one end of the container and extracted from the other.queues are implemented as containers adaptors, which are classes thatuse an encapsulated object of a specific container class as its underlyingcontainer, providing a specific set of member functions to accessits elements. Elements are pushed into the "back" of the specific container and popped from its "front".
+                        Although the concept may be simple, programming a queue is not as simple as programming a stack. Let's go back to the example of the cafeteria line. Let's say one person leaves the line. Then what? Everyone in line must step forward, right? Now, imagine if only one person could move at a time. So, the second person steps forward to fill the space left by the first person, and then the third person steps forwards to fill the space left by the second person, and so on. Now imagine that no one can leave or be added to the line until everyone has stepped forward. You can see the line will move very slowly. It is not difficult to program a queue that works, but it is quite a proposition to make a queue that is fast!!
+                        he underlying container may be one of the standard container class template or some other specifically designed container class. 
+                        <a class="queue-read-more"><b>Read more</b></a>
+                        </p>
+                        <p>This underlying container shall support at least the following operations:</p>
+                        <ol>
+                            <li>empty</li>
+                            <li>size</li>
+                            <li>front</li>
+                            <li>back</li>
+                            <li>push_back</li>
+                            <li>pop_front</li>                  
+                        </ol>
+                        <p>As we now understand that in queue, we access both ends for different reasons, a diagram given below tries to explain queue representation as data structure −</p>
+                        <p>
+                            <img src="http://www.tutorialspoint.com/data_structures_algorithms/images/queue_diagram.jpg" alt="queue pic">
+                        </p>
+                        
+                        <p>
+                            <a class="queue-read-more" href="#Queue"><b>Read more</b></a>
+                        </p>
+                        <p><a href="http://www.tutorialspoint.com/data_structures_algorithms/dsa_queue.htm"><b>More info</b></a></p>
+                    
+                    
+                </div>
+                      </div>
+		  
+            <div id="tree">
+            <div class="content_imagetext">
+          
+           <div class="sectionintro">
+            <h3 id="Tree">Binary Tree</h3>
+            </div>
+		    <div class="content_image">
+		      <img src="http://www.teach-ict.com/as_as_computing/ocr/H447/F453/3_3_5/data_structures/miniweb/images/tree.jpg" alt="picture of a tree" style="cursor:pointer" onclick="showImage('http://www.teach-ict.com/as_as_computing/ocr/H447/F453/3_3_5/data_structures/miniweb/images/tree.jpg')">     
+
+                    </div>
+                <div id="treeText">
+		    <p> 
+                        The binary tree is a fundamental data structure used in computer science. The binary tree is a useful 
+                        data structure for rapidly storing sorted data and rapidly retrieving stored data. A binary tree is 
+                        composed of parent nodes, or leaves, each of which stores data and also links to up to two other child 
+                        nodes (leaves) which can be visualized spatially as below the first node with one placed to the left and 
+                        with one placed to the right. It is the relationship between the leaves linked to and the linking leaf, 
+                        also known as the parent node, which makes the binary tree such an efficient data structure. It is the 
+                        leaf on the left which has a lesser key value (i.e., the value used to search for a leaf in the tree), 
+                        and it is the leaf on the right which has an equal or greater key value. As a result, the leaves on the 
+                        farthest left of the tree have the lowest values, whereas the leaves on the right of the tree have the 
+                        greatest values. More importantly, as each leaf connects to two other leaves, it is the beginning of a 
+                        new, smaller, binary tree. Due to this nature, it is possible to easily access and insert data in a 
+                        binary tree using search and insert functions recursively called on successive leaves.         
+                        <a class="tree-read-more"><b>Read more</b></a>
+                    </p>
+                    <p>The typical graphical representation of a binary tree is essentially that of an upside down tree. It begins with a root node, which contains the original key value. The root node has two child nodes; each child node might have its own child nodes. Ideally, the tree would be structured so that it is a perfectly balanced tree, with each node having the same number of child nodes to its left and to its right. A perfectly balanced tree allows for the fastest average insertion of data or retrieval of data. The worst case scenario is a tree in which each node only has one child node, so it becomes as if it were a linked list in terms of speed.</p>
+                    <pre><code>
+                    struct node
+                        {
+                          int key_value;
+                          node *left;
+                          node *right;
+                        };
+                    class btree
+                    {
+                        public:
+                            btree();
+                            ~btree();
+
+                            void insert(int key);
+                            node *search(int key);
+                            void destroy_tree();
+
+                        private:
+                            void destroy_tree(node *leaf);
+                            void insert(int key, node *leaf);
+                            node *search(int key, node *leaf);
+
+                            node *root;
+                    };
+                    </code></pre>
+                    <p>The insert and search functions that are public members of the class are designed to allow the user of the class to use the class without dealing with the underlying design. The insert and search functions which will be called recursively are the ones which contain two parameters, allowing them to travel down the tree. The destroy_tree function without arguments is a front for the destroy_tree function which will recursively destroy the tree, node by node, from the bottom up.
+                    The function destroy_tree goes to the bottom of each part of the tree, that is, searching while there is a non-null node, deletes that leaf, and then it works its way back up. The function deletes the leftmost node, then the right child node from the leftmost node's parent node, then it deletes the parent node, then works its way back to deleting the other child node of the parent of the node it just deleted, and it continues this deletion working its way up to the node of the tree upon which delete_tree was originally called. In the example tree above, the order of deletion of nodes would be 5 8 6 11 18 14 10. Note that it is necessary to delete all the child nodes to avoid wasting memory.</p>
+                    <pre><code>
+                    void btree::insert(int key, node *leaf)
+                    {
+                      if(key&lt; leaf-&gt;key_value)
+                      {
+                        if(leaf->left!=NULL)
+                         insert(key, leaf->left);
+                        else
+                        {
+                          leaf->left=new node;
+                          leaf->left->key_value=key;
+                          leaf->left->left=NULL;    //Sets the left child of the child node to null
+                          leaf->left->right=NULL;   //Sets the right child of the child node to null
+                        }  
+                      }
+                      else if(key>=leaf->key_value)
+                      {
+                        if(leaf->right!=NULL)
+                          insert(key, leaf->right);
+                        else
+                        {
+                          leaf->right=new node;
+                          leaf->right->key_value=key;
+                          leaf->right->left=NULL;  //Sets the left child of the child node to null
+                          leaf->right->right=NULL; //Sets the right child of the child node to null
+                        }
+                      }
+                    }
+<a class="tree-read-more"></a>  
+                    </code></pre>
+                <p><a href="http://www.cprogramming.com/tutorial/lesson18.html"><b> More info</b></a></p>
+                </div>
+                     
+		  </div>
+            
+                
+		<div id="sign-up">
+                    <h3 id="Signup">Sign up for our courses</h3>
+                  <form name="myForm" action="http://naivist.net/form/" onsubmit="return validateForm();" method="post">
+                      
+                      <fieldset>
+			<dl>
+			<dt><label for="email">Email:<input type="text" id="email" name="email"></label></dt>	
+                        <dt id="checkbox"><input type="checkbox" id="check" name="checkbox" checked="checked" />*<small>I want to receive weekly updates on news</small></dt><dd></dd>
+                        </dl>				
+                        </fieldset>
+                       <input type="submit" value="Sign up">
+                       
+                   </form>
+                   <p><i><small>*By posting your email, you agree to the privacy policy and terms of service</small></i></p>
+                </div>
+            
+            
+            
+		  
+		</div>
+      </div><!--close content-->   
+	</div><!--close site_content-->  	
+        </div>
+
+                   
+    <footer>
+        <div id="share-buttons">
+            <a href="index.html"><img src="http://www.worlfahion.com/web_images/HomButton.png" alt="home"></a>
+            <a href="https://twitter.com/share?url=https://simplesharebuttons.com&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank">
+            <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
+            </a>
+              <script>
+                var a = document.createElement("a");
+                a.href ="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com";
+                var picture = document.createElement("img"); 
+                picture.src = "https://simplesharebuttons.com/images/somacro/facebook.png";
+                picture.alt = "Facebook";
+                a.appendChild(picture);    
+                var element = document.getElementById("share-buttons");
+                element.appendChild(a);
+              </script>
+            <a href="http://jigsaw.w3.org/css-validator/check/referer">
+            <img
+            src="http://jigsaw.w3.org/css-validator/images/vcss"
+            alt="Valid CSS!" />
+            </a>
+        </div><br/>
+          <p>Author: Mārtiņš Laganovskis | ml12061 | University Of Latvia</p>
+    </footer>
+  </div>
+
+  
+</body>
 </html>
